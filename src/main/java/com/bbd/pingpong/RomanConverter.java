@@ -50,6 +50,10 @@ public class RomanConverter {
     }
 
     public static int Convert(String s) {
+       if (s == null || s.isEmpty())  {
+           throw (new IllegalArgumentException("Not a valid roman"));
+       }
+
         // Handle upper case and lower case
         s = s.toUpperCase();
 

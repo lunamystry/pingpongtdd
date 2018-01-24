@@ -33,7 +33,8 @@ public class AppTest {
             "VIII, 8",
             "XXXIX, 39",
             "MMMCMXLIX, 3949",
-            "LXXXIX, 89"
+            "LXXXIX, 89",
+            "CMXCIX, 999"
     })
     public void shouldHandleValidRomanNumerals(String roman, int arabic) {
         assertEquals(arabic, RomanConverter.Convert(roman));
@@ -43,10 +44,23 @@ public class AppTest {
     @ParameterizedTest(name = "\"should be throw and exception for {0}")
     @CsvSource({
             "P",
+            "A",
             "ICXII",
-            "XXXX"
+            "XXXX",
+            "IIII"
+
     })
-    public void shouldThrow(String invalidRoman) {
+    public void shouldThrowForInvalidRomanNumerals(String invalidRoman) {
         assertThrows(IllegalArgumentException.class, () -> RomanConverter.Convert(invalidRoman));
+    }
+
+    @Test
+    public void testEmptyString() {
+        assertThrows(IllegalArgumentException.class, () -> RomanConverter.Convert(""));
+    }
+
+    @Test
+    public void testNull() {
+        assertThrows(IllegalArgumentException.class, () -> RomanConverter.Convert(null));
     }
 }
