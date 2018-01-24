@@ -1,4 +1,4 @@
-package com.bbd;
+package com.bbd.pingpong;
 
 /**
  * Hello world!
